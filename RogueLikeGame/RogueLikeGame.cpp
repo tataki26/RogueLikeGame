@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include<cstdlib> // = <stdlib.h>
 #include<Windows.h>
 using namespace std;
