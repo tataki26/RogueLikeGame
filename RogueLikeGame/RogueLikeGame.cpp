@@ -3,12 +3,14 @@
 #include<Windows.h>
 using namespace std;
 
+const int n = 5;
+
 // 지도 배열
-char map[5][6] = {
+char map[n][n+1] = {
     "#####",
     "# # #",
     "#^ Y#",
-    "#  M#",
+    "#a M#",
     "#####"
 };
 
@@ -62,7 +64,7 @@ int main()
                 {
                     if (map[mainY + 1][mainX] == '^') hp -= 10;
                     if (map[mainY + 1][mainX] != '#') mainY++;
-
+ 
                 }
 
                 else if (GetAsyncKeyState(VK_LEFT) & 0x8001 != 0)
@@ -114,24 +116,12 @@ int main()
                     return 0;
                 }
 
-                /*
-
-                if (map[mainY][mainX] == '^')
+                if (map[mainY][mainX] == 'a')
                 {
-                    printAll();
-                    for (int i = 0; i < 2; i++)
-                    {
-                        system("color 3F");
-                        Sleep(30);
-                        system("color 0F");
-                        Sleep(30);
-                    }
-                    system("color 3F");
-                    hp -= 10;
-                    Sleep(500);
+                    hp = 100;
+                    map[mainY][mainX] = ' ';
+                    
                 }
-                */
-
 
                 Sleep(100);
 
