@@ -8,7 +8,7 @@ char map[5][6] = {
     "#####",
     "#   #",
     "# # #",
-    "#M  #",
+    "#M Y#",
     "#####"
 };
 
@@ -83,9 +83,26 @@ int main()
                         Sleep(70);
                     }
                     system("color 0F");
-                    Sleep(500);
+                    Sleep(300);
                     system("cls");
                     cout << "\n\n\n\n\tGAME OVER\n\n\n\n\n";
+                    return 0;
+                }
+
+                if (map[mainY][mainX] == 'Y')
+                {
+                    printAll();
+                    for (int i = 0; i < 5; i++)
+                    {
+                        system("color 3F");
+                        Sleep(30);
+                        system("color 1F");
+                        Sleep(70);
+                    }
+                    system("color 1F");
+                    Sleep(300);
+                    system("cls");
+                    cout << "\n\n\n\n\tYou Win!!!\n\n\n\n\n";
                     return 0;
                 }
 
