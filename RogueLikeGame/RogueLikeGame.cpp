@@ -8,7 +8,7 @@ char map[5][6] = {
     "#####",
     "#   #",
     "# # #",
-    "#   #",
+    "#M  #",
     "#####"
 };
 
@@ -57,16 +57,36 @@ int main()
                 {
 
                     if (map[mainY + 1][mainX] != '#') mainY++;
+
                 }
 
                 if (GetAsyncKeyState(VK_LEFT) & 0x8001 != 0)
                 {
                     if (map[mainY][mainX-1] != '#') mainX--;
+
                 }
 
                 if (GetAsyncKeyState(VK_RIGHT) & 0x8001 != 0)
                 {
                     if (map[mainY][mainX+1] != '#') mainX++;
+
+                }
+
+                if (map[mainY][mainX] == 'M')
+                {
+                    printAll();
+                    for (int i = 0; i < 5; i++)
+                    {
+                        system("color 3F");
+                        Sleep(30);
+                        system("color 0F");
+                        Sleep(70);
+                    }
+                    system("color 0F");
+                    Sleep(500);
+                    system("cls");
+                    cout << "\n\n\n\n\tGAME OVER\n\n\n\n\n";
+                    return 0;
                 }
 
                 Sleep(100);
@@ -75,28 +95,7 @@ int main()
                
             }
         }
-
-        /*
-        if (GetAsyncKeyState(VK_UP) & 0x8001)
-        {
-            mainY--;
-        }
-
-        if (GetAsyncKeyState(VK_DOWN) & 0x8001 !=0)
-        {
-            mainY++;
-        }
-
-        if (GetAsyncKeyState(VK_LEFT) & 0x8001 != 0)
-        {
-            mainX--;
-        }
-
-        if (GetAsyncKeyState(VK_RIGHT) & 0x8001 != 0)
-        {
-            mainX++;
-        }
-        */
         
     }
+
 }
