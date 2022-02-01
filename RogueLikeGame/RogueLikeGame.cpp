@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include<cstdlib> // = <stdlib.h>
 #include<Windows.h>
 using namespace std;
@@ -8,24 +8,24 @@ const int N = 20;
 char map[N][N + 1] =
 {
 "####################",
-"#  ^^^^^^^^^^^^^^^^#",
-"# ^ MMMMMMMMMMMM   #",
-"#                  #",
-"######             #",
-"#      a           #",
-"#                  #",
-"#   Y              #",
-"#                  #",
-"#                  #",
-"#                  #",
-"#                  #",
-"#                  #",
-"#                  #",
-"#                  #",
-"#                  #",
-"#                  #",
-"#                  #",
-"#           ^    aY#",
+"# # ^ #Y  ###Ma ^^#",
+"# ^ M  ##M#######^##",
+"#####M  #^     M#  #",
+"#  ^   #MM M#M  ^^#",
+"#  ##^ #^  ^#####  #",
+"#M  ^^#M #MY^ ^## M#",
+"# ^# M#^ ###^   #^M#",
+"# ^# ^M M### # M#  #",
+"#  #Ma#  MYM # ^#M^#",
+"# ^  Ma# ###^#M^#  #",
+"#^###### ###^#^^^  #",
+"#^## M ^  ^ ^ ###  #",
+"#^## ^^##M#a# ##  ##",
+"#^## ^#^^Y#######^^#",
+"#^   ## ###M #   ^^#",
+"# ###aM^ ^^^^  # ###",
+"# ########### ^#  ##",
+"#             ^#M aM",
 "####################",
 };
 
@@ -46,8 +46,34 @@ void printAll()
         // null 문자 제외
         for (int x = 0; x < N; x++)
         {
-            if (y == mainY && x == mainX) cout << "@";
-            else cout << map[y][x];
+            if (y == mainY && x == mainX)
+            {
+                cout << "♀";
+            }
+            else if (map[y][x] == ' ')
+            {
+                cout << "  ";
+            }
+            else if (map[y][x] == 'a')
+            {
+                cout << "♥";
+            }
+            else if (map[y][x] == '^')
+            {
+                cout << "♨";
+            }
+            else if (map[y][x] == '#')
+            {
+                cout << "■";
+            }
+            else if (map[y][x] == 'Y')
+            {
+                cout << "δ";
+            }
+            else if (map[y][x] == 'M')
+            {
+                cout << "Ω";
+            }
         }
         cout << "\n"; // endl보다 \n이 좀 더 빠름
     }
