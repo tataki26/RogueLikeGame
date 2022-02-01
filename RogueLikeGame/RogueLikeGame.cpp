@@ -6,15 +6,16 @@ using namespace std;
 // 지도 배열
 char map[5][6] = {
     "#####",
-    "#   #",
     "# # #",
-    "#M Y#",
+    "#^ Y#",
+    "#  M#",
     "#####"
 };
 
 // 주인공 좌표
 int mainY = 1;
 int mainX = 1;
+int hp = 100;
 
 void printAll()
 {
@@ -31,8 +32,11 @@ void printAll()
             if (y == mainY && x == mainX) cout << "@";
             else cout << map[y][x];
         }
-        cout << endl;
+        cout << "\n"; // endl보다 \n이 좀 더 빠름
     }
+
+    cout << "HP: " << hp << "\n";
+
 }
 
 
@@ -49,26 +53,29 @@ int main()
 
                 if (GetAsyncKeyState(VK_UP) & 0x8001)
                 {
+                    if (map[mainY - 1][mainX] == '^') hp -= 10;
                     if(map[mainY-1][mainX] != '#') mainY--;
 
                 }
 
-                if (GetAsyncKeyState(VK_DOWN) & 0x8001 != 0)
+                else if (GetAsyncKeyState(VK_DOWN) & 0x8001 != 0)
                 {
-
+                    if (map[mainY + 1][mainX] == '^') hp -= 10;
                     if (map[mainY + 1][mainX] != '#') mainY++;
 
                 }
 
-                if (GetAsyncKeyState(VK_LEFT) & 0x8001 != 0)
+                else if (GetAsyncKeyState(VK_LEFT) & 0x8001 != 0)
                 {
+                    if (map[mainY][mainX - 1] == '^') hp -= 10;
                     if (map[mainY][mainX-1] != '#') mainX--;
-
+                    
                 }
 
-                if (GetAsyncKeyState(VK_RIGHT) & 0x8001 != 0)
+                else if (GetAsyncKeyState(VK_RIGHT) & 0x8001 != 0)
                 {
-                    if (map[mainY][mainX+1] != '#') mainX++;
+                    if (map[mainY][mainX + 1] == '^') hp -= 10;
+                    if (map[mainY][mainX+1] != '#') mainX++; 
 
                 }
 
@@ -102,9 +109,29 @@ int main()
                     system("color 1F");
                     Sleep(300);
                     system("cls");
-                    cout << "\n\n\n\n\tYou Win!!!\n\n\n\n\n";
+                    cout << "\n\n\n\n\t  You Win!!!\n\n";
+                    cout << "\tYour Score: " << hp<<"\n\n\n\n";
                     return 0;
                 }
+
+                /*
+
+                if (map[mainY][mainX] == '^')
+                {
+                    printAll();
+                    for (int i = 0; i < 2; i++)
+                    {
+                        system("color 3F");
+                        Sleep(30);
+                        system("color 0F");
+                        Sleep(30);
+                    }
+                    system("color 3F");
+                    hp -= 10;
+                    Sleep(500);
+                }
+                */
+
 
                 Sleep(100);
 
